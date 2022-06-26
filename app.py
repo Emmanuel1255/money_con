@@ -2,10 +2,11 @@ from flask import Flask
 from flask_restful import Resource, Api
 from bs4 import BeautifulSoup
 import urllib.request
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 api = Api(app)
-
 class curency_converter(Resource):
     def get(self):
         #this function using  BeautifulSoup, urllib.request and  csv liberies
@@ -57,7 +58,7 @@ class curency_converter(Resource):
         euro_buy_rate = euro_buy_result.getText()
         euro_buy_split = euro_buy_rate.split(': ')
         euro_buy = euro_buy_split[1]
-        
+
         #gbp selling at
         euro_soup_sell = soup.find('div', attrs={'id': 'wb_Text98'})
         euro_sell_result_spn = euro_soup_sell.find('span')
@@ -68,8 +69,11 @@ class curency_converter(Resource):
         forex = {"usd": {"selling":usd_sell,"buying":usd_buy},"gbp":{"selling":gbp_sell,"buying":gbp_buy},"euro":{"selling":euro_sell,"buying":euro_buy}}
         return forex
 
-
 api.add_resource(curency_converter, '/')
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=9009)
