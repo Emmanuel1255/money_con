@@ -82,7 +82,7 @@ class curency_converter(Resource):
             forex.headers.add("Access-Control-Allow-Origin", "*")
             return forex
         except urllib.error.URLError as e:
-            forex = {"usd": {"selling":"13,300","buying":"13,157"},"gbp":{"selling":"16,250","buying":"16,000"},"euro":{"selling":"13,900","buying":"13,786"},"usd_mid":{"usd midrate":"13,153}}
+            forex = {"usd": {"selling":"13,300","buying":"13,157"},"gbp":{"selling":"16,250","buying":"16,000"},"euro":{"selling":"13,900","buying":"13,786"}}
             forex=jsonify(forex)
             forex.headers.add("Access-Control-Allow-Origin", "*")
             return forex
