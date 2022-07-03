@@ -27,12 +27,7 @@ class curency_converter(Resource):
             usd_buy_split = usd_buy_rate.split(': ')
             # usd_buy_split = usd_buy_split.split()
             usd_buy = usd_buy_split[1]
-            usd_buy = usd_buy.replace(',', '')
-            usd_buy = usd_buy[4:]
-            usd_buy = float(usd_buy)
-            usd_buy = usd_buy/1000
-            usd_buy = round(usd_buy, 2)
-
+            
             #usd selling at
             usd_soup_sell = soup.find('div', attrs={'id': 'wb_Text67'})
             usd_sell_result_spn = usd_soup_sell.find('span')
@@ -40,11 +35,7 @@ class curency_converter(Resource):
             usd_sell_rate = usd_sell_result.getText()
             usd_sell_split = usd_sell_rate.split(': ')
             usd_sell = usd_sell_split[1]
-            usd_sell = usd_sell.replace(',', '')
-            usd_sell = usd_sell[4:]
-            usd_sell = float(usd_sell)
-            usd_sell = usd_sell/1000
-            usd_sell = round(usd_sell, 2)
+            
             
             #usd midrate at
             usd_soup_mid = soup.find('div', attrs={'id': 'wb_Text69'})
@@ -53,11 +44,7 @@ class curency_converter(Resource):
             usd_mid_rate = usd_mid_result.getText()
             usd_mid_split = usd_mid_rate.split(': ')
             usd_mid = usd_mid_split[0]
-            usd_mid = usd_mid.replace(',', '')
-            usd_mid = usd_mid[4:]
-            usd_mid = float(usd_mid)
-            usd_mid = usd_mid/1000
-            usd_mid = round(usd_mid, 2)
+            
             
             #gbp buying at
             gbp_soup_buy = soup.find('div', attrs={'id': 'wb_Text99'})
@@ -67,12 +54,7 @@ class curency_converter(Resource):
             gbp_buy_split = gbp_buy_rate.split(': ')
             # gbp_buy_sp = gbp_buy_split[0].split(' ')
             gbp_buy = gbp_buy_split[1]
-            gbp_buy = gbp_buy.replace(',', '')
-            gbp_buy = gbp_buy[4:]
-            gbp_buy = float(gbp_buy)
-            gbp_buy = gbp_buy/1000
-            gbp_buy = round(gbp_buy, 2)
-
+            
             #gbp selling at
             gbp_soup_sell = soup.find('div', attrs={'id': 'wb_Text100'})
             gbp_sell_result_spn = gbp_soup_sell.find('span')
@@ -81,10 +63,7 @@ class curency_converter(Resource):
             gbp_sell_split = gbp_sell_rate.split(': ')
             # gbp_sell_sp = gbp_sell_split[0].split(' ')
             gbp_sell = gbp_sell_rate
-            # gbp_sell = gbp_sell.replace(',', '')
-            # gbp_sell = gbp_sell[4:]
-            # gbp_sell = float(gbp_sell)
-            # gbp_sell = gbp_sell/1000
+            
 
             #euro buying at
             euro_soup_buy = soup.find('div', attrs={'id': 'wb_Text96'})
@@ -93,11 +72,7 @@ class curency_converter(Resource):
             euro_buy_rate = euro_buy_result.getText()
             euro_buy_split = euro_buy_rate.split(': ')
             euro_buy = euro_buy_split[1]
-            euro_buy = euro_buy.replace(',', '')
-            euro_buy = euro_buy[4:]
-            euro_buy = float(euro_buy)
-            euro_buy = euro_buy/1000
-            euro_buy = round(euro_buy, 2)
+            
             #gbp selling at
             euro_soup_sell = soup.find('div', attrs={'id': 'wb_Text98'})
             euro_sell_result_spn = euro_soup_sell.find('span')
@@ -105,11 +80,7 @@ class curency_converter(Resource):
             euro_sell_rate = euro_sell_result.getText()
             euro_sell_split = euro_sell_rate.split(': ')
             euro_sell = euro_sell_split[1]
-            euro_sell = euro_sell.replace(',', '')
-            euro_sell = euro_sell[4:]
-            euro_sell = float(euro_sell)
-            euro_sell = euro_sell/1000
-            euro_sell = round(euro_sell, 2)
+            
             # forex = [{"usd_selling":usd_sell,"usd_buying":usd_buy},{"gbp_selling":"13,284.64","gbp_buying":gbp_buy},{"euro_selling":euro_sell,"euro_buying":euro_buy}]
             # forex = [{"usd_selling":usd_sell,"usd_buying":usd_buy},{"gbp_selling":gbp_sell,"gbp_buying":gbp_buy},{"euro_selling":euro_sell,"euro_buying":euro_buy}]
             # print(forex)
