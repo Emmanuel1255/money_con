@@ -19,15 +19,13 @@ class curency_converter(Resource):
             soup = BeautifulSoup(page, 'html.parser')
 
             #usd buying at
-            #usd buying at
             usd_soup_buy = soup.find('div', attrs={'id': 'wb_Text66'})
             usd_buy_result_spn = usd_soup_buy.find('span')
             usd_buy_result = usd_buy_result_spn.find('strong')
             usd_buy_rate = usd_buy_result.getText()
             usd_buy_split = usd_buy_rate.split(': ')
-            # usd_buy_split = usd_buy_split.split()
             usd_buy = usd_buy_split[1]
-            
+
             #usd selling at
             usd_soup_sell = soup.find('div', attrs={'id': 'wb_Text67'})
             usd_sell_result_spn = usd_soup_sell.find('span')
@@ -35,7 +33,6 @@ class curency_converter(Resource):
             usd_sell_rate = usd_sell_result.getText()
             usd_sell_split = usd_sell_rate.split(': ')
             usd_sell = usd_sell_split[1]
-            
             
             #usd midrate at
             usd_soup_mid = soup.find('div', attrs={'id': 'wb_Text69'})
@@ -45,7 +42,6 @@ class curency_converter(Resource):
             usd_mid_split = usd_mid_rate.split(': ')
             usd_mid = usd_mid_split[0]
             
-            
             #gbp buying at
             gbp_soup_buy = soup.find('div', attrs={'id': 'wb_Text99'})
             gbp_buy_result_spn = gbp_soup_buy.find('span')
@@ -54,7 +50,7 @@ class curency_converter(Resource):
             gbp_buy_split = gbp_buy_rate.split(': ')
             # gbp_buy_sp = gbp_buy_split[0].split(' ')
             gbp_buy = gbp_buy_split[1]
-            
+
             #gbp selling at
             gbp_soup_sell = soup.find('div', attrs={'id': 'wb_Text100'})
             gbp_sell_result_spn = gbp_soup_sell.find('span')
@@ -63,7 +59,7 @@ class curency_converter(Resource):
             gbp_sell_split = gbp_sell_rate.split(': ')
             # gbp_sell_sp = gbp_sell_split[0].split(' ')
             gbp_sell = gbp_sell_rate
-            
+
 
             #euro buying at
             euro_soup_buy = soup.find('div', attrs={'id': 'wb_Text96'})
@@ -72,7 +68,7 @@ class curency_converter(Resource):
             euro_buy_rate = euro_buy_result.getText()
             euro_buy_split = euro_buy_rate.split(': ')
             euro_buy = euro_buy_split[1]
-            
+
             #gbp selling at
             euro_soup_sell = soup.find('div', attrs={'id': 'wb_Text98'})
             euro_sell_result_spn = euro_soup_sell.find('span')
@@ -80,11 +76,10 @@ class curency_converter(Resource):
             euro_sell_rate = euro_sell_result.getText()
             euro_sell_split = euro_sell_rate.split(': ')
             euro_sell = euro_sell_split[1]
-            
             # forex = [{"usd_selling":usd_sell,"usd_buying":usd_buy},{"gbp_selling":"13,284.64","gbp_buying":gbp_buy},{"euro_selling":euro_sell,"euro_buying":euro_buy}]
             # forex = [{"usd_selling":usd_sell,"usd_buying":usd_buy},{"gbp_selling":gbp_sell,"gbp_buying":gbp_buy},{"euro_selling":euro_sell,"euro_buying":euro_buy}]
             # print(forex)
-            forex = {"usd": {"selling":usd_sell,"buying":gbp_buy},"gbp":{"selling":"13.28","buying":usd_buy},"euro":{"selling":euro_sell,"buying":euro_buy},"usd_mid":{"usd midrate":usd_mid}}
+            forex = {"usd": {"selling":usd_sell,"buying":gbp_buy},"gbp":{"selling":"13,285.86","buying":usd_buy},"euro":{"selling":euro_sell,"buying":euro_buy},"usd_mid":{"usd midrate":usd_mid}}
             forex=jsonify(forex)
             forex.headers.add("Access-Control-Allow-Origin", "*")
             return forex
