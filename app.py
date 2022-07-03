@@ -19,6 +19,7 @@ class curency_converter(Resource):
             soup = BeautifulSoup(page, 'html.parser')
 
             #usd buying at
+            #usd buying at
             usd_soup_buy = soup.find('div', attrs={'id': 'wb_Text66'})
             usd_buy_result_spn = usd_soup_buy.find('span')
             usd_buy_result = usd_buy_result_spn.find('strong')
@@ -79,7 +80,7 @@ class curency_converter(Resource):
             # forex = [{"usd_selling":usd_sell,"usd_buying":usd_buy},{"gbp_selling":"13,284.64","gbp_buying":gbp_buy},{"euro_selling":euro_sell,"euro_buying":euro_buy}]
             # forex = [{"usd_selling":usd_sell,"usd_buying":usd_buy},{"gbp_selling":gbp_sell,"gbp_buying":gbp_buy},{"euro_selling":euro_sell,"euro_buying":euro_buy}]
             # print(forex)
-            forex = {"usd": {"selling":usd_sell,"buying":gbp_buy},"gbp":{"selling":"13,285.86","buying":usd_buy},"euro":{"selling":euro_sell,"buying":euro_buy},"usd_mid":{"usd midrate":usd_mid}}
+            forex = {"usd": {"selling":usd_sell,"buying":gbp_buy},"gbp":{"selling":"13,284.64","buying":usd_buy},"euro":{"selling":euro_sell,"buying":euro_buy},"usd_mid":{"usd midrate":usd_mid}}
             forex=jsonify(forex)
             forex.headers.add("Access-Control-Allow-Origin", "*")
             return forex
